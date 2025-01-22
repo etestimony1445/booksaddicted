@@ -1,33 +1,20 @@
-name: Run Ruby Script and Save Output
+name: Run Until Complete
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch: # Allows manual trigger of the workflow
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.1
+      - name: Run the Script
+        run: ruby your_script.rb
 
-      - name: Install Dependencies
-        run: |
-          gem install bundler
-          bundle install
-
-      - name: Run Ruby script
-        run: ruby bookshallucinated.rb
-
-      - name: Upload Generated File
+      - name: Upload Output File
         uses: actions/upload-artifact@v3
         with:
-          name: generated-file
-          path:   tabkh.json
+          name: output-file
+          path: ./history_geo.json # Assuming file.json is generated in the root directory of the repository
