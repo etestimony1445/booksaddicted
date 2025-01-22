@@ -1,15 +1,20 @@
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=04 أسماك
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=13 أعشاب وتوابل
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=10 ألبان
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=08 الأرز
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=12 حساء
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=05 حلويات
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=14 خضار
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=03 دجاج
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=01 سلطات
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=06 صلصات وتزيين الطعام
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=15 عام
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=07 فاكهة
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=09 لحوم
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=02 معجنات
-https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=06&subcat=02&l2subcat=11 مقبلات
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=14&search=books آثار
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=09&search=books آسيا
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=15&search=books أطالس وخرائط
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=11&search=books أفريقيا
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=08&search=books أميركا
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=07&search=books أوروبا
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=10&search=books أوستراليا
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=03&search=books الخليج العربي
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=02&search=books العالم العربي والإسلامي
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=05&search=books المغرب العربي
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=04&search=books الهلال الخصيب
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=06&search=books بلاد وادي النيل
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=13&search=books خرائط
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=01&search=books دراسات تاريخية
+https://www.neelwafurat.com/browsel1.aspx?cat=08&subcat=12&search=books دراسات جغرافية
+https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=08&subcat=12&l2subcat=02 دراسات جغرافية|الجغرافيا الإقتصادية
+https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=08&subcat=12&l2subcat=01 دراسات جغرافية|الجغرافيا التاريخية
+https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=08&subcat=12&l2subcat=04 دراسات جغرافية|جغرافية بشرية
+https://www.neelwafurat.com/browse1.aspx?search=books&ddmSubject=08&subcat=12&l2subcat=03 دراسات جغرافية|عام
+https://www.neelwafurat.com/browse1.aspx?ddmsubject=08&subcat=16&search=books عام
