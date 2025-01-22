@@ -1,0 +1,39 @@
+name: Run Ruby Scraper
+
+on:
+  workflow_dispatch:  # Allows manual triggering
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC (adjust as needed)
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Setup Ruby environment
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'  # Use your Ruby version
+          bundler-cache: true   # Cache gems to speed up future runs
+
+      # Step 3: Install Firefox
+      - name: Install Firefox
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox
+
+      # Step 4: Install dependencies (e.g., gems)
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      # Step 5: Run your Ruby script
+      - name: Run Ruby script
+        run: |
+          ruby bookshallucinated.rb
