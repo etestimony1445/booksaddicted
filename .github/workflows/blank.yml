@@ -2,9 +2,7 @@ name: Run Ruby Scraper
 
 on:
   workflow_dispatch:  # Allows manual triggering
-  schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight UTC (adjust as needed)
-
+  
 jobs:
   run-scraper:
     runs-on: ubuntu-latest
