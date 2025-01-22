@@ -32,3 +32,8 @@ jobs:
 
       - name: Run Ruby script
         run: ruby bookshallucinated.rb
+        - name: Upload Generated File
+        uses: actions/upload-artifact@v3
+        with:
+          name: generated-file
+          path: asnaff.json
