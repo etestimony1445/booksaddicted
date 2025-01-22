@@ -1,19 +1,40 @@
-name: Run Until Complete
+name: Run Ruby Scraper
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:  # Allows manual triggering of the workflow
+
 jobs:
-  run-script:
+  run-scraper:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Run the Script
-        run: ruby bookshallucinated.rb
+      # Step 2: Set up Ruby
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'  # Replace with your Ruby version
+          bundler-cache: true  # Cache gems for faster runs
 
-      - name: Upload Output File
+      # Step 3: Install Bundler
+      - name: Install Bundler
+        run: |
+          gem install bundler
+
+      # Step 4: Install dependencies
+      - name: Install dependencies
+        run: |
+          bundle install
+
+      # Step 5: Run Ruby script
+      - name: Run Ruby script
+        run: |
+          ruby bookshallucinated.rb
+      - name: Upload JSON file as artifact
         uses: actions/upload-artifact@v3
         with:
-          name: output-file
-          path: file.json 
+          name: generated-json
+          path: path/to/generated/file.json
