@@ -24,11 +24,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y firefox
-
+    # Step 3.1: Install Bundler
+      - name: Install Bundler
+        run: |
+          gem install bundler
       # Step 4: Install dependencies (e.g., gems)
       - name: Install dependencies
         run: |
-          gem install bundler
+          
           bundle install
 
       # Step 5: Run your Ruby script
