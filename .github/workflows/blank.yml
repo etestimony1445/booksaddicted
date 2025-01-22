@@ -17,4 +17,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: output-file
-          path: ./history_geo.json # Assuming file.json is generated in the root directory of the repository
+          path: history_geo.json 
