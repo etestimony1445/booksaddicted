@@ -24,7 +24,7 @@ class BookScraper
   def initialize
     @mechanize = Mechanize.new
     @csv_file = 'tabkh.csv'
-    @json_file = 'tabkh.json'
+    @json_file = 'history_geo.json'
     @last_page_file = 'last_page.txt'
 
     # Create files if they don't exist
