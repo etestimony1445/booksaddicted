@@ -1,4 +1,4 @@
-name: Ruby Script Runner
+name: Run Ruby Script and Save Output
 
 on:
   push:
@@ -18,22 +18,16 @@ jobs:
         with:
           ruby-version: 3.1
 
-      - name: Install Bundler
-        run: gem install bundler
-
       - name: Install Dependencies
         run: |
-          if [ -f Gemfile ]; then
-            bundle install
-          else
-            echo "Gemfile not found"
-            exit 1
-          fi
+          gem install bundler
+          bundle install
 
       - name: Run Ruby script
         run: ruby bookshallucinated.rb
-        - name: Upload Generated File
+
+      - name: Upload Generated File
         uses: actions/upload-artifact@v3
         with:
           name: generated-file
-          path: asnaff.json
+          path: path/to/generated/file.json
