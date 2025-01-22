@@ -1,40 +1,34 @@
-name: Run Ruby Scraper
+name: Ruby Script Runner
 
 on:
-  workflow_dispatch:  # Allows manual triggering
-  
+  push:
+    branches:
+      - main
+
 jobs:
-  run-scraper:
+  run-script:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      # Step 2: Setup Ruby environment
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'  # Use your Ruby version
-          bundler-cache: true   # Cache gems to speed up future runs
+          ruby-version: 3.1
 
-      # Step 3: Install Firefox
-      - name: Install Firefox
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y firefox
-    # Step 3.1: Install Bundler
       - name: Install Bundler
-        run: |
-          gem install bundler
-      # Step 4: Install dependencies (e.g., gems)
-      - name: Install dependencies
-        run: |
-          
-          bundle install
+        run: gem install bundler
 
-      # Step 5: Run your Ruby script
-      - name: Run Ruby script
+      - name: Install Dependencies
         run: |
-          ruby bookshallucinated.rb
+          if [ -f Gemfile ]; then
+            bundle install
+          else
+            echo "Gemfile not found"
+            exit 1
+          fi
+
+      - name: Run Ruby script
+        run: ruby bookshallucinated.rb
