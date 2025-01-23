@@ -31,7 +31,7 @@ jobs:
           ruby your_script.rb
 
       - name: Upload JSON file
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: output-json
           path: output.json # Change this to the path of your generated JSON file
