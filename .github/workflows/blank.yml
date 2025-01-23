@@ -22,12 +22,6 @@ jobs:
         with:
           ruby-version: '3.2' # Specify your Ruby version
 
-      - name: Download checkpoint
-        uses: actions/download-artifact@v4
-        with:
-          name: checkpoint
-          path: . # Save in the current directory
-
       - name: Install dependencies
         run: |
           gem install bundler
@@ -37,7 +31,7 @@ jobs:
         run: |
           ruby your_script.rb
 
-      - name: Upload JSON file
+      - name: Upload JSON output
         uses: actions/upload-artifact@v4
         with:
           name: output-json
@@ -48,3 +42,17 @@ jobs:
         with:
           name: checkpoint
           path: checkpoint.json
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build # Ensure the build job completes first
+
+    steps:
+      - name: Download checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: checkpoint
+          path: . # Save in the current directory
+
+      - name: Verify checkpoint
+        run: cat checkpoint.json
