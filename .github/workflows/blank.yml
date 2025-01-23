@@ -23,7 +23,7 @@ jobs:
           ruby-version: '3.2' # Specify your Ruby version
 
       - name: Download checkpoint
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
           name: checkpoint
           path: . # Save in the current directory
@@ -38,13 +38,13 @@ jobs:
           ruby your_script.rb
 
       - name: Upload JSON file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: output-json
           path: output.json # Adjust the path as necessary
 
       - name: Upload checkpoint
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: checkpoint
           path: checkpoint.json
