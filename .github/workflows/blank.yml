@@ -56,3 +56,5 @@ jobs:
 
       - name: Verify checkpoint
         run: cat checkpoint.json
+
+      # Optionally, you can add more steps to test the output or perform further checks
