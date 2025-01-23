@@ -1,6 +1,7 @@
 name: Ruby Capybara Workflow
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -21,6 +22,12 @@ jobs:
         with:
           ruby-version: '3.2' # Specify your Ruby version
 
+      - name: Download checkpoint
+        uses: actions/download-artifact@v3
+        with:
+          name: checkpoint
+          path: . # Save in the current directory
+
       - name: Install dependencies
         run: |
           gem install bundler
@@ -34,4 +41,10 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: output-json
-          path: output.json # Change this to the path of your generated JSON file
+          path: output.json # Adjust the path as necessary
+
+      - name: Upload checkpoint
+        uses: actions/upload-artifact@v3
+        with:
+          name: checkpoint
+          path: checkpoint.json
