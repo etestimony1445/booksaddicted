@@ -1,40 +1,27 @@
-name: Run Ruby Scraper
+name: Run Until Complete
 
 on:
-  workflow_dispatch:  # Allows manual triggering of the workflow
+  workflow_dispatch:
 
 jobs:
-  run-scraper:
+  run-script:
     runs-on: ubuntu-latest
-
     steps:
-      # Step 1: Checkout repository
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      # Step 2: Set up Ruby
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.1'  # Replace with your Ruby version
-          bundler-cache: true  # Cache gems for faster runs
-
-      # Step 3: Install Bundler
-      - name: Install Bundler
+      - name: Set Up Ruby Environment
         run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby-full build-essential
           gem install bundler
+          gem install capybara mechanize selenium-webdriver
 
-      # Step 4: Install dependencies
-      - name: Install dependencies
-        run: |
-          bundle install
+      - name: Run the Script
+        run: ruby your_script.rb
 
-      # Step 5: Run Ruby script
-      - name: Run Ruby script
-        run: |
-          ruby bookshallucinated.rb
-      - name: Upload JSON file as artifact
+      - name: Upload Output File
         uses: actions/upload-artifact@v3
         with:
-          name: generated-json
-          path: path/to/generated/file.json
+          name: output-file
+          path: file.json
