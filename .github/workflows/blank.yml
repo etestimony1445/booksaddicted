@@ -1,27 +1,37 @@
-name: Run Until Complete
+name: Ruby Capybara Workflow
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  run-script:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Set Up Ruby Environment
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ruby-full build-essential
-          gem install bundler
-          gem install capybara mechanize selenium-webdriver
-
-      - name: Run the Script
-        run: ruby your_script.rb
-
-      - name: Upload Output File
-        uses: actions/upload-artifact@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          name: output-file
-          path: file.json
+          ruby-version: '3.2' # Specify your Ruby version
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Run script
+        run: |
+          ruby your_script.rb
+
+      - name: Upload JSON file
+        uses: actions/upload-artifact@v2
+        with:
+          name: output-json
+          path: output.json # Change this to the path of your generated JSON file
