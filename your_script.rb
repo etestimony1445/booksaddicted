@@ -25,21 +25,29 @@ class BookScraper
     @mechanize = Mechanize.new
     @csv_file = 'tabkh.csv'
     @json_file = 'history_geo.json'
-    @last_page_file = 'last_page.txt'
+    @checkpoint_file = 'checkpoint.json'
 
     # Create files if they don't exist
     FileUtils.touch(@csv_file) unless File.exist?(@csv_file)
     FileUtils.touch(@json_file) unless File.exist?(@json_file)
-    FileUtils.touch(@last_page_file) unless File.exist?(@last_page_file)
+    FileUtils.touch(@checkpoint_file) unless File.exist?(@checkpoint_file)
 
-    @last_page_url = begin
-      File.read(@last_page_file).strip
-    rescue StandardError
-      nil
-    end
     @csv = CSV.open(@csv_file, 'a',
                     headers: ['Title', 'Author', 'Genre', 'Book URL', 'Image', 'Year', 'Publisher', 'ISBN', 'Price (USD)', 'Page URL'])
-    @json = []
+    @checkpoint = load_checkpoint
+  end
+
+  def load_checkpoint
+    return {} unless File.exist?(@checkpoint_file)
+
+    JSON.parse(File.read(@checkpoint_file))
+  rescue JSON::ParserError
+    {}
+  end
+
+  def save_checkpoint(genre, current_page_url)
+    @checkpoint[genre] = current_page_url
+    File.write(@checkpoint_file, @checkpoint.to_json)
   end
 
   def extract_price(book_page)
@@ -59,20 +67,17 @@ class BookScraper
     (local_price * rate).to_i
   end
 
-  def scrape_books(genre_url, genre, _last_page_url = nil)
+  def scrape_books(genre_url, genre)
     puts "Scraping books for genre: #{genre}"
 
-    # Start from the last page URL or the base genre URL
-    start_url = @last_page_url.empty? ? genre_url : @last_page_url
-    #visit(start_url)
-     #start_url = @last_page_file.nil? || @last_page_file.empty? ? genre_url : @last_page_file
-     visit(genre_url)
-     #visit(start_url)
+    # Start from the last checkpoint or the base genre URL
+    start_url = @checkpoint[genre] || genre_url
+    visit(start_url)
 
     loop do
       # Record the current page URL for resuming
       current_page_url = page.current_url
-      File.write(@last_page_file, current_page_url)
+      save_checkpoint(genre, current_page_url)
 
       # Process all books on the current page
       all('.gridview .imggrid a').each do |book_link|
@@ -105,9 +110,9 @@ class BookScraper
         @csv << [title, author, genre, book_url, image_url, year, publisher, isbn, usd_price, current_page_url]
 
         # Save to JSON
-        @json << { title: title, author: author, genre: genre, book_url: book_url, image: image_url, year: year,
-                   publisher: publisher, isbn: isbn, price_in_usd: usd_price, page_url: current_page_url }
-        File.open(@json_file, 'a') { |f| f.write(JSON.generate(@json.last) + "\n") }
+        @json = { title: title, author: author, genre: genre, book_url: book_url, image: image_url, year: year,
+                  publisher: publisher, isbn: isbn, price_in_usd: usd_price, page_url: current_page_url }
+        File.open(@json_file, 'a') { |f| f.write(JSON.generate(@json) + "\n") }
       end
 
       # Check for "next page" button
